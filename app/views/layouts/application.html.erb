@@ -45,7 +45,7 @@
             <ul class="navbar-nav ms-auto">
               <% if authenticated? %>
                <li class="nav-item">
-                <%= link_to user_path(current_user), class: "nav-link text-light" do %>
+                <%= link_to user_path(Current.user), class: "nav-link text-light" do %>
                  <i class="fa-solid fa-house"></i>Home
                 <% end %>
                </li>
@@ -93,6 +93,7 @@
      </header>    
 
      <main>
+      <p id="notice" class="text-success"><%= notice %></p>
       <%= yield %>
      </main>
      
