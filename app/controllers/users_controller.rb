@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   allow_unauthenticated_access only: [:new, :create] 
-  
+  before_action :is_matching_login_user, only: [:edit, :update]
+
   def new
     @user = User.new
   end
@@ -33,15 +34,22 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to user_path(@user), notice: "ユーザー情報を更新しました。"
+      redirect_to user_path(@user), notice: "You have updated user successfully."
     else
-      render :edit
+      render :edit, status: :unprocessable_entity 
     end
   end
   private
  
   def user_params
     params.require(:user).permit(:name, :email_address, :password, :password_confirmation, :introduction, :profile_image)
+  end
+
+  def is_matching_login_user
+    user = User.find(params[:id])
+    unless user.id == Current.user.id
+      redirect_to user_path(Current.user)
+    end
   end
 
 end
