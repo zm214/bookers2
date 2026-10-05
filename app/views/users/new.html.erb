@@ -16,12 +16,12 @@
   <% end %>
   
   <div class="field">
-    <%= f.label :Name %><br>
+    <%= f.label :name, "Name" %><br>
     <%= f.text_field :name, autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label :Email %><br>
+    <%= f.label :email_address, "Email" %><br>
     <%= f.email_field :email_address %>
   </div>
 
@@ -36,7 +36,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Sign up", class:"btn btn-sm btn-success" %>
   </div>
 <% end %>
 
