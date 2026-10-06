@@ -8,6 +8,7 @@ class BooksController < ApplicationController
       redirect_to book_path(@book), notice: "You have created book successfully."
     else
       @books = Book.all
+      @user = Current.user
       render :index, status: :unprocessable_entity
     end
   end
