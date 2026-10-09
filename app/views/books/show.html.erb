@@ -3,6 +3,7 @@
    <%= render 'books/list', user: @user, book: @book_new %>
     <div class="col-md-8 offset-md-1">
       <h2>Book detail</h2>
+      
       <table class="table">
         <tbody>
           <tr>
@@ -16,8 +17,8 @@
             <td><%= @book.body %></td>
 
             <% if @book.user == Current.user %>
-             <td><%= link_to "Edit", edit_book_path, class: "btn btn-sm btn-success" %></td>
-             <td><%= link_to "Destroy", books_path, data: { turbo_method: :delete, turbo_confirm: "本当に消しますか？" }, class: "btn btn-sm btn-danger" %></td>
+             <td><%= link_to "Edit", edit_book_path(@book), class: "btn btn-sm btn-success" %></td>
+             <td><%= link_to "Destroy", book_path(@book), data: { turbo_method: :delete, turbo_confirm: "本当に消しますか？" }, class: "btn btn-sm btn-danger" %></td>
             <% end %>
           </tr>
         </tbody> 
